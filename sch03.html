@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年3月 予定表</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            height: 90vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: sans-serif;
+            width: 80%;
+            max-width: 900px;
+        }
+        /* iframeをコンテナのように見せるスタイル */
+        .schedule-frame {
+            width: 90%;
+            max-width: 1000px;
+            flex-grow: 1;
+            border: none;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+        .footer {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+    </style>
+    <script>
+        (function() {
+            let buffer = "";
+            let timer;
+            document.addEventListener('keydown', function(e) {
+                if (e.key >= '0' && e.key <= '9') {
+                    buffer += e.key;
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        const month = parseInt(buffer, 10);
+                        if (month >= 1 && month <= 12) {
+                            const fileName = "sch" + (month < 10 ? "0" + month : month) + ".html";
+                            window.location.href = fileName;
+                        }
+                        buffer = "";
+                    }, 500);
+                }
+            });
+        })();
+    </script>
+</head>
+<body>
+
+    <h2>2026年3月</h2>
+
+    <!-- sch03.txt を直接読み込む -->
+    <iframe src="sch03.txt" class="schedule-frame"></iframe>
+
+    <div class="footer">
+        C:\Users\tomog\gemini\sch03.txt
+    </div>
+
+</body>
+</html>

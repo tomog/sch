@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function() {
+            // 現在の月を取得し、2桁（01〜12）に変換
+            const month = String(new Date().getMonth() + 1).padStart(2, '0');
+            
+            // 遷移先のファイル名を指定
+            const targetFile = `sch${month}.html`;
+            
+            // 即座にページを移動
+            window.location.replace(targetFile);
+        })();
+    </script>
+</head>
+<body>
+    <!-- 読み込み中の表示（一瞬だけ見える場合があります） -->
+    <p>Loading schedule...</p>
+</body>
+</html>
